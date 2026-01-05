@@ -134,7 +134,7 @@ static int inhibit_take(void) {
     int fd;
 
     int r = sd_bus_call_method(system_bus, "org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit", &err, &m,
-                               "ssss", "sleep", "mpd-inhibit", "MPD is playing", "block");
+                               "ssss", "idle", "mpd-inhibit", "MPD is playing", "block");
     if (r < 0 || sd_bus_message_read(m, "h", &fd) < 0) {
         if (r < 0) fprintf(stderr, "mpd-inhibit: inhibit call failed: %s\n", err.message);
         sd_bus_error_free(&err);
