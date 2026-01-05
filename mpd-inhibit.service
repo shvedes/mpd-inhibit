@@ -1,0 +1,13 @@
+[Unit]
+Description=Inhibit System Sleep When Playing Music
+After=mpd.service
+BindsTo=mpd.service
+PartOf=mpd.service
+
+[Service]
+ExecStart=/usr/bin/mpd-inhibit
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=graphical-session.target
